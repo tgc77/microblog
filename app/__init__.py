@@ -10,6 +10,7 @@ from flask_bootstrap import Bootstrap
 from flask_moment import Moment
 from flask_babel import Babel, lazy_gettext as _l
 from config import Config
+from app.search_engine import SearchEngine
 
 db = SQLAlchemy()
 migrate = Migrate()
@@ -33,6 +34,8 @@ def create_app(config_class=Config):
     bootstrap.init_app(app)
     moment.init_app(app)
     babel.init_app(app)
+
+    app.search_engine = SearchEngine({'URL': app.config['SEARCH_ENGINE_URL']})
 
     from app.errors import bp as errors_bp
     app.register_blueprint(errors_bp)
