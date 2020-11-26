@@ -35,7 +35,8 @@ def create_app(config_class=Config):
     moment.init_app(app)
     babel.init_app(app)
 
-    app.search_engine = SearchEngine({'URL': app.config['SEARCH_ENGINE_URL']})
+    app.search_engine = SearchEngine({'URL': app.config['SEARCH_ENGINE_URL']}) \
+        if app.config['SEARCH_ENGINE_URL'] else None
 
     from app.errors import bp as errors_bp
     app.register_blueprint(errors_bp)

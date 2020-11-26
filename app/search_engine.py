@@ -4,7 +4,7 @@ from elasticsearch import Elasticsearch
 class SearchEngine():
 
     def __init__(self, config) -> None:
-        url = config['URL'] if config['URL'] else None
+        url = config['URL'] if config['URL'] else 'localhost:9200'
         try:
             self.search_engine = Elasticsearch([url])
         except Exception as err:
