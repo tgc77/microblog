@@ -11,6 +11,14 @@ from app.translate import translate
 from app.main import bp
 
 
+@bp.route('/user/<username>/popup')
+@login_required
+def user_popup(username):
+    user = User.query.filter_by(username=username).first_or_404()
+    form = EmptyForm()
+    return render_template('user_popup.html.j2', user=user, form=form)
+
+
 @bp.before_app_request
 def before_request():
     if current_user.is_authenticated:
