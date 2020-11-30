@@ -19,3 +19,4 @@ class Config (object):
     MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
     ADMINS = ['tiagogcunha@gmail.com']
     SEARCH_ENGINE_URL = os.environ.get('SEARCH_ENGINE_URL')
+    REDIS_URL = os.environ.get('REDIS_URL') or 'redis://'
